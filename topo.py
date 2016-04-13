@@ -68,7 +68,9 @@ class QuaggaTopo(Topo):
                                            inMountNamespace=True,
                                            inPIDNamespace=True,
                                            inUTSNamespace=True)
-	    	
+		
+	    quaggaNodes.append(quaggaContainer);
+
             # Add a loopback interface with an IP in router's announced range
             self.addNodeLoopbackIntf(node=host.name, ip=host.loIP)
 
@@ -81,9 +83,12 @@ class QuaggaTopo(Topo):
             # Attach the quaggaContainer to the IXP Fabric Switch
             #self.addLink(quaggaContainer, ixpfabric)
 
-	self.addLink(H1,R1, intfname1='h1-eth0', params1={'ip':'172.0.1.1/24'}, intfname2='r1-eth1', params2={'ip':'172.0.1.2/24'})
+	self.addlink(quaggaNodes[0], quaggaNodes[1], intfname1='h1-eth0', params1={'ip':'172.0.1.1/24'}, intfname2='r1-eth1', params2={'ip':'172.0.1.2/24'})
+
+"""	self.addLink(H1,R1, intfname1='h1-eth0', params1={'ip':'172.0.1.1/24'}, intfname2='r1-eth1', params2={'ip':'172.0.1.2/24'})
 	self.addLink(R1,R2, intfname1='r1-eth1', params1={'ip':'172.0.1.2/24'}, intfname2='r2-eth0', params2={'ip':'172.0.2.2/24'})
 	self.addLink(R1,R3, intfname1='r1-eth2', params1={'ip':'172.0.1.2/24'}, intfname2='r3-eth0', params2={'ip':'172.0.3.2/24'})
 	self.addLink(R2,R4, intfname1='r2-eth1', params1={'ip':'172.0.2.2/24'}, intfname2='r4-eth0', params2={'ip':'172.0.4.2/24'})
 	self.addLink(R3,R4, intfname1='r3-eth0', params1={'ip':'172.0.3.2/24'}, intfname2='r4-eth1', params2={'ip':'172.0.4.2/24'})
 	self.addLink(H2,R4, intfname1='h2-eth0', params1={'ip':'172.0.4.1/24'}, intfname2='r4-eth2', params2={'ip':'172.0.4.2/24'})
+"""
