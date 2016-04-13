@@ -81,7 +81,7 @@ class QuaggaTopo(Topo):
             #self.addLink(quaggaContainer, ixpfabric)
 
 	self.addLink(H1,R1, intfname1='h1-eth0', params1={'ip':'172.0.1.1/24'}, intfname2='r1-eth1', params2={'ip':'172.0.1.2/24'})
-	self.addLink(R1,R2, 1intfname1='r1-eth1', params1={'ip':'172.0.1.2/24'}, intfname2='r2-eth0', params2={'ip':'172.0.2.2/24'})
+	self.addLink(R1,R2, intfname1='r1-eth1', params1={'ip':'172.0.1.2/24'}, intfname2='r2-eth0', params2={'ip':'172.0.2.2/24'})
 	self.addLink(R1,R3, intfname1='r1-eth2', params1={'ip':'172.0.1.2/24'}, intfname2='r3-eth0', params2={'ip':'172.0.3.2/24'})
 	self.addLink(R2,R4, intfname1='r2-eth1', params1={'ip':'172.0.2.2/24'}, intfname2='r4-eth0', params2={'ip':'172.0.4.2/24'})
 	self.addLink(R3,R4, intfname1='r3-eth0', params1={'ip':'172.0.3.2/24'}, intfname2='r4-eth1', params2={'ip':'172.0.4.2/24'})
