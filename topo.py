@@ -40,24 +40,19 @@ class QuaggaTopo(Topo):
         # Add switch for IXP fabric
         #ixpfabric = self.addSwitch('fabric-sw1')
 
-	h1 = QuaggaHost(name='h1', ip='172.0.1.1/24', loIP='10.0.1.1/24')
-	r1 = QuaggaHost(name='r1', ip='172.0.1.2/24',
-                                      loIP='10.0.1.2/24')
-	h2 = QuaggaHost(name='h2', ip='172.0.6.2/24',
-                                      loIP='10.0.6.1/24')
-	r4 = QuaggaHost(name='r4', ip='172.0.4.2/24',
-                                      loIP='10.0.4.2/24')
-	r2 = QuaggaHost(name='r2', ip='172.0.2.2/24',
-                                      loIP='10.0.2.2/24')
-	r3 = QuaggaHost(name='r3', ip='172.0.3.2/24',
-                                      loIP='10.0.3.2/24')
+	H1 = QuaggaHost(name='h1', ip='172.0.1.1/24', loIP='10.0.1.1/24')
+	R1 = QuaggaHost(name='r1', ip='172.0.1.2/24', loIP='10.0.1.2/24')
+	H2 = QuaggaHost(name='h2', ip='172.0.6.2/24', loIP='10.0.6.1/24')
+	R4 = QuaggaHost(name='r4', ip='172.0.4.2/24', loIP='10.0.4.2/24')
+	R2 = QuaggaHost(name='r2', ip='172.0.2.2/24', loIP='10.0.2.2/24')
+	R3 = QuaggaHost(name='r3', ip='172.0.3.2/24', loIP='10.0.3.2/24')
 
-	quaggaHosts.append(h1)
-	quaggaHosts.append(r1)
-	quaggaHosts.append(h2)
-	quaggaHosts.append(r4)
-	quaggaHosts.append(r2)
-	quaggaHosts.append(r3)
+	quaggaHosts.append(H1)
+	quaggaHosts.append(R1)
+	quaggaHosts.append(H2)
+	quaggaHosts.append(R4)
+	quaggaHosts.append(R2)
+	quaggaHosts.append(R3)
 	
 
         # Setup each Quagga router, add a link between it and the IXP fabric
@@ -85,9 +80,9 @@ class QuaggaTopo(Topo):
             # Attach the quaggaContainer to the IXP Fabric Switch
             #self.addLink(quaggaContainer, ixpfabric)
 
-	self.addLink(h1,r1, intfname1='h1-eth0', params1={'ip':'172.0.1.1/24'}, intfname2='r1-eth1', params2={'ip':'172.0.1.2/24'})
-	self.addLink(r1,r2, intfname1='r1-eth1', params1={'ip':'172.0.1.2/24'}, intfname2='r2-eth0', params2={'ip':'172.0.2.2/24'})
-	self.addLink(r1,r3, intfname1='r1-eth2', params1={'ip':'172.0.1.2/24'}, intfname2='r3-eth0', params2={'ip':'172.0.3.2/24'})
-	self.addLink(r2,r4, intfname1='r2-eth1', params1={'ip':'172.0.2.2/24'}, intfname2='r4-eth0', params2={'ip':'172.0.4.2/24'})
-	self.addLink(r3,r4, intfname1='r3-eth0', params1={'ip':'172.0.3.2/24'}, intfname2='r4-eth1', params2={'ip':'172.0.4.2/24'})
-	self.addLink(h2,r4, intfname1='h2-eth0', params1={'ip':'172.0.6.2/24'}, intfname2='r4-eth2', params2={'ip':'172.0.4.2/24'})
+	self.addLink(H1,R1, intfname1='h1-eth0', params1={'ip':'172.0.1.1/24'}, intfname2='r1-eth1', params2={'ip':'172.0.1.2/24'})
+	self.addLink(R1,R2, 1intfname1='r1-eth1', params1={'ip':'172.0.1.2/24'}, intfname2='r2-eth0', params2={'ip':'172.0.2.2/24'})
+	self.addLink(R1,R3, intfname1='r1-eth2', params1={'ip':'172.0.1.2/24'}, intfname2='r3-eth0', params2={'ip':'172.0.3.2/24'})
+	self.addLink(R2,R4, intfname1='r2-eth1', params1={'ip':'172.0.2.2/24'}, intfname2='r4-eth0', params2={'ip':'172.0.4.2/24'})
+	self.addLink(R3,R4, intfname1='r3-eth0', params1={'ip':'172.0.3.2/24'}, intfname2='r4-eth1', params2={'ip':'172.0.4.2/24'})
+	self.addLink(H2,R4, intfname1='h2-eth0', params1={'ip':'172.0.6.2/24'}, intfname2='r4-eth2', params2={'ip':'172.0.4.2/24'})
