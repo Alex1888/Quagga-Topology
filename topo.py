@@ -42,7 +42,7 @@ class QuaggaTopo(Topo):
 
 	H1 = QuaggaHost(name='h1', ip='172.0.1.1/24', loIP='10.0.1.1/24')
 	R1 = QuaggaHost(name='r1', ip='172.0.1.2/24', loIP='10.0.1.2/24')
-	H2 = QuaggaHost(name='h2', ip='172.0.6.2/24', loIP='10.0.6.1/24')
+	H2 = QuaggaHost(name='h2', ip='172.0.4.1/24', loIP='10.0.4.1/24')
 	R4 = QuaggaHost(name='r4', ip='172.0.4.2/24', loIP='10.0.4.2/24')
 	R2 = QuaggaHost(name='r2', ip='172.0.2.2/24', loIP='10.0.2.2/24')
 	R3 = QuaggaHost(name='r3', ip='172.0.3.2/24', loIP='10.0.3.2/24')
@@ -54,6 +54,7 @@ class QuaggaTopo(Topo):
 	quaggaHosts.append(R2)
 	quaggaHosts.append(R3)
 	
+	quaggaNodes = []
 
         # Setup each Quagga router, add a link between it and the IXP fabric
         for host in quaggaHosts:
@@ -67,7 +68,7 @@ class QuaggaTopo(Topo):
                                            inMountNamespace=True,
                                            inPIDNamespace=True,
                                            inUTSNamespace=True)
-
+	    	
             # Add a loopback interface with an IP in router's announced range
             self.addNodeLoopbackIntf(node=host.name, ip=host.loIP)
 
@@ -85,4 +86,4 @@ class QuaggaTopo(Topo):
 	self.addLink(R1,R3, intfname1='r1-eth2', params1={'ip':'172.0.1.2/24'}, intfname2='r3-eth0', params2={'ip':'172.0.3.2/24'})
 	self.addLink(R2,R4, intfname1='r2-eth1', params1={'ip':'172.0.2.2/24'}, intfname2='r4-eth0', params2={'ip':'172.0.4.2/24'})
 	self.addLink(R3,R4, intfname1='r3-eth0', params1={'ip':'172.0.3.2/24'}, intfname2='r4-eth1', params2={'ip':'172.0.4.2/24'})
-	self.addLink(H2,R4, intfname1='h2-eth0', params1={'ip':'172.0.6.2/24'}, intfname2='r4-eth2', params2={'ip':'172.0.4.2/24'})
+	self.addLink(H2,R4, intfname1='h2-eth0', params1={'ip':'172.0.4.1/24'}, intfname2='r4-eth2', params2={'ip':'172.0.4.2/24'})
