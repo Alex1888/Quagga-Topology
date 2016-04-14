@@ -83,9 +83,16 @@ class QuaggaTopo(Topo):
             # Attach the quaggaContainer to the IXP Fabric Switch
             #self.addLink(quaggaContainer, ixpfabric)
 
+	
 	self.addLink(quaggaNodes[0], quaggaNodes[1], intfName1='h1-eth0', params1={'ip':'172.0.1.1/24'}, intfName2='r1-eth0', params2={'ip':'172.0.1.2/24'})
+
 	self.addLink(quaggaNodes[1],quaggaNodes[4], intfName1='r1-eth1', params1={'ip':'172.0.2.1/24'}, intfName2='r2-eth0', params2={'ip':'172.0.2.2/24'})
 	self.addLink(quaggaNodes[1],quaggaNodes[5], intfName1='r1-eth2', params1={'ip':'172.0.3.1/24'}, intfName2='r3-eth0', params2={'ip':'172.0.3.2/24'})
+
 	self.addLink(quaggaNodes[4],quaggaNodes[3], intfName1='r2-eth1', params1={'ip':'172.0.4.1/24'}, intfName2='r4-eth0', params2={'ip':'172.0.4.2/24'})
+
 	self.addLink(quaggaNodes[5],quaggaNodes[3], intfName1='r3-eth1', params1={'ip':'172.0.5.1/24'}, intfName2='r4-eth1', params2={'ip':'172.0.5.2/24'})
+	
 	self.addLink(quaggaNodes[2],quaggaNodes[3], intfName1='h2-eth0', params1={'ip':'172.0.6.2/24'}, intfName2='r4-eth2', params2={'ip':'172.0.6.1/24'})
+	
+	
